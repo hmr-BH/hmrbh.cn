@@ -419,14 +419,16 @@ function onTouchEnd() {
     cube.style.transition = '';
 }
 
-cubeFaces.forEach(face => {
-    face.addEventListener('click', function () {
-        if (!this.dataset.lang || isDragging) return;
-
+ cubeFaces.forEach(face => {
+    face.addEventListener('click', function() {
+        if (!this.dataset.lang) return;
+        
         cubeFaces.forEach(f => f.classList.remove('active'));
         this.classList.add('active');
-
-        currentLang = this.dataset.lang;
+        
+        const lang = this.getAttribute('data-lang');
+        currentLang = lang;
+        
         updateText();
     });
 });
