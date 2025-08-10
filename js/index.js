@@ -349,8 +349,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const deltaX = clientX - startX;
         const deltaY = clientY - startY;
         
-        rotationY = startRotationY + deltaX * 0.7;
-        rotationX = startRotationX - deltaY * 0.7;
+        rotationY = startRotationY + deltaX * 1.2;
+        rotationX = startRotationX - deltaY * 1.2;
         
         cube.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
     }
