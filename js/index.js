@@ -299,93 +299,137 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // 汉堡菜单点击事件
     document.getElementById('menu-toggle').addEventListener('click', function() {
         const navLinks = document.querySelector('.nav-links');
         navLinks.classList.toggle('active');
         this.classList.toggle('open');
     });
     
-    // 语言立方体功能
-    const languageCube = document.getElementById('languageCube');
-    const cube = document.querySelector('.cube');
-    const cubeFaces = document.querySelectorAll('.cube-face');
     
-    // 添加旋转效果
-    let rotationX = -15;
-    let rotationY = -45;
-    let isDragging = false;
-    let startX, startY;
-    let startRotationX, startRotationY;
-    
-    // 鼠标事件
-    languageCube.addEventListener('mousedown', startDrag);
-    languageCube.addEventListener('mousemove', drag);
-    languageCube.addEventListener('mouseup', endDrag);
-    languageCube.addEventListener('mouseleave', endDrag);
-    
-    // 触摸事件
-    languageCube.addEventListener('touchstart', touchStart);
-    languageCube.addEventListener('touchmove', touchMove);
-    languageCube.addEventListener('touchend', touchEnd);
-    
-    function startDrag(e) {
-        isDragging = true;
-        startX = e.clientX || e.touches[0].clientX;
-        startY = e.clientY || e.touches[0].clientY;
-        startRotationX = rotationX;
-        startRotationY = rotationY;
-        cube.style.transition = 'none';
-    }
-    
-    function drag(e) {
-        if (!isDragging) return;
-        
-        const clientX = e.clientX || (e.touches && e.touches[0].clientX);
-        const clientY = e.clientY || (e.touches && e.touches[0].clientY);
-        
-        if (!clientX || !clientY) return;
-        
-        const deltaX = clientX - startX;
-        const deltaY = clientY - startY;
-        
-        rotationY = startRotationY + deltaX * 1.2;
-        rotationX = startRotationX - deltaY * 1.2;
-        
-        cube.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
-    }
-    
-    function endDrag() {
-        isDragging = false;
-        cube.style.transition = '';
-    }
-    
-    function touchStart(e) {
-        startDrag(e.touches[0]);
-    }
-    
-    function touchMove(e) {
-        drag(e.touches[0]);
-    }
-    
-    function touchEnd() {
-        endDrag();
-    }
-    
-    // 语言切换功能
-    cubeFaces.forEach(face => {
-        face.addEventListener('click', function() {
-            if (!this.dataset.lang) return;
-            
-            cubeFaces.forEach(f => f.classList.remove('active'));
-            this.classList.add('active');
-            
-            const lang = this.getAttribute('data-lang');
-            currentLang = lang;
-            
-            updateText();
-        });
+/* =========  语言立方体功能  ========= */
+const languageCube = document.getElementById('languageCube');
+const cube          = document.querySelector('.cube');
+const cubeFaces     = document.querySelectorAll('.cube-face');
+
+/* 初始角度 */
+let rotationX = -15;
+let rotationY = -45;
+
+/* 拖动状态 */
+let isDragging = false;
+let startX, startY;
+let startRotationX, startRotationY;
+
+/* 节流函数：保证 60 fps */
+function throttle(fn, delay = 16) {
+    let timer = null;
+    return function (...args) {
+        if (timer) return;
+        timer = setTimeout(() => {
+            fn.apply(this, args);
+            timer = null;
+        }, delay);
+    };
+}
+
+function applyTransform() {
+    cube.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
+}
+
+/* ==========  PC端鼠标事件  ========== */
+languageCube.addEventListener('mousedown', onMouseDown);
+
+function onMouseDown(e) {
+    isDragging = true;
+    startX = e.clientX;
+    startY = e.clientY;
+    startRotationX = rotationX;
+    startRotationY = rotationY;
+
+    cube.style.transition = 'none';
+    document.documentElement.classList.add('no-select');
+
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup',   onMouseUp);
+}
+
+const onMouseMove = throttle(function (e) {
+    if (!isDragging) return;
+    e.preventDefault();                 // 禁止选区、图片拖拽
+
+    const deltaX = e.clientX - startX;
+    const deltaY = e.clientY - startY;
+
+    rotationY = startRotationY + deltaX * 1.2;
+    rotationX = startRotationX - deltaY * 1.2;
+
+    applyTransform();
+});
+
+function onMouseUp() {
+    isDragging = false;
+
+    document.documentElement.classList.remove('no-select');
+    document.removeEventListener('mousemove', onMouseMove);
+    document.removeEventListener('mouseup',   onMouseUp);
+    cube.style.transition = '';
+}
+
+/* ==========  移动端触摸事件  ========== */
+languageCube.addEventListener('touchstart', onTouchStart, { passive: false });
+
+function onTouchStart(e) {
+    if (e.touches.length !== 1) return;
+    e.preventDefault();                 // 阻止滚动、缩放
+
+    isDragging = true;
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    startRotationX = rotationX;
+    startRotationY = rotationY;
+
+    cube.style.transition = 'none';
+    document.documentElement.classList.add('no-select');
+
+    languageCube.addEventListener('touchmove',  onTouchMove, { passive: false });
+    languageCube.addEventListener('touchend',   onTouchEnd);
+    languageCube.addEventListener('touchcancel',onTouchEnd);
+}
+
+const onTouchMove = throttle(function (e) {
+    if (!isDragging || e.touches.length !== 1) return;
+    e.preventDefault();
+
+    const deltaX = e.touches[0].clientX - startX;
+    const deltaY = e.touches[0].clientY - startY;
+
+    rotationY = startRotationY + deltaX * 1.2;
+    rotationX = startRotationX - deltaY * 1.2;
+
+    applyTransform();
+});
+
+function onTouchEnd() {
+    isDragging = false;
+
+    document.documentElement.classList.remove('no-select');
+    languageCube.removeEventListener('touchmove',  onTouchMove);
+    languageCube.removeEventListener('touchend',   onTouchEnd);
+    languageCube.removeEventListener('touchcancel',onTouchEnd);
+    cube.style.transition = '';
+}
+
+cubeFaces.forEach(face => {
+    face.addEventListener('click', function () {
+        if (!this.dataset.lang || isDragging) return;
+
+        cubeFaces.forEach(f => f.classList.remove('active'));
+        this.classList.add('active');
+
+        currentLang = this.dataset.lang;
+        updateText();
     });
+});
     
     // 注册年份计算
     (function () {
