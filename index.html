@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>郝某人BH hmr-BH</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="icon" href="./img/logo.jpg">
+</head>
+<body>
+    <div class="background-grid"></div>
+    
+    <nav>
+        <div class="nav-links">
+            <a href="#home" data-i18n="home"></a>
+            <a href="#about" data-i18n="about"></a>
+            <a href="#projects" data-i18n="projects"></a>
+            <a href="#contact" data-i18n="contact"></a>
+            <a href="#friends" data-i18n="friends"></a>
+        </div>
+        <div class="menu-toggle" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+    
+    <section id="home" class="section hero">
+        <div class="floating-icons" style="top:20%; left:10%;">&#60;/&#62;</div>
+        <div class="floating-icons" style="top:30%; right:15%;">&#123; &#125;</div>
+        
+        <div class="avatar-container">
+            <div class="avatar-halo"></div>
+            <div class="avatar-halo"></div>
+            <div class="avatar-halo"></div>
+            <img src="./img/logo.jpg" alt="郝某人BH" class="avatar">
+        </div>
+        
+        <p class="greeting" data-i18n="greeting">你好，我是</p>
+        <h1 class="name">hmr-BH</h1>
+        
+        <div class="quote-container">
+            <div id="typingEffect" class="typing-quote">
+                <span id="typedQuote"></span><span class="cursor"></span>
+            </div>
+            <div id="quoteSource" class="quote-source"></div>
+        </div>
+    </section>
+    
+    <section id="about" class="section">
+        <h2 class="section-title" data-i18n="aboutTitle">关于我</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p data-i18n="aboutText1"></p>
+                <p data-i18n="aboutText2"></p>
+                <p data-i18n="aboutText3"></p>
+            </div>
+            
+            <div class="github-card">
+                <h3 data-i18n="githubTitle">GitHub 开发足迹</h3>
+                <div class="github-stats">
+                    <div class="stat">
+                        <div class="stat-value">SwarmClone</div>
+                        <div data-i18n="githubStat1"></div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">6</div>
+                        <div data-i18n="githubStat2"></div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">Vue.js Rust</div>
+                        <div data-i18n="githubStat3"></div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" id="regYears"></div>
+                        <div data-i18n="githubStat4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="projects" class="section">
+        <h2 class="section-title" data-i18n="projectsTitle"></h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title" data-i18n="project1Title"></h3>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Vue.js</span>
+                        <span class="tag">Unity</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p class="project-description" data-i18n="project1Desc"></p>
+                    <div class="project-links">
+                        <a href="https://github.com/SwarmClone/SwarmClone" target="_blank" class="github-btn">
+                            <i class="fab fa-github"></i> 
+                            <span data-i18n="codeRepo">代码仓库</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title" data-i18n="project2Title"></h3>
+                    <div class="project-tags">
+                        <span class="tag">Godot</span>
+                        <span class="tag">Windows API</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p class="project-description" data-i18n="project2Desc"></p>
+                    <div class="project-links">
+                        <a href="https://github.com/hmr-BH/DrawStudentID" target="_blank" class="github-btn">
+                            <i class="fab fa-github"></i> 
+                            <span data-i18n="codeRepo">代码仓库</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">Nothing</h3>
+                    <div class="project-tags">
+                        <span class="tag">None</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">It's nothing here. What are you looking for?uhhhhhhhhhhhhhhh</p>
+                    <div class="project-links">
+                        <a href="#" target="_blank" class="github-btn looking-for">
+                            <i class="fab fa-github"></i> 
+                            <span>I know it is nothing, but I'm looking for it!</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="section">
+        <h2 class="section-title" data-i18n="contactTitle"></h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <a href="mailto:1218271192@qq.com" class="contact-card clickable">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h3 data-i18n="email"></h3>
+                        <p>1218271192@qq.com</p>
+                    </div>
+                </a>
+                
+                <a href="https://github.com/hmr-BH" target="_blank" class="contact-card clickable">
+                    <div class="contact-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div>
+                        <h3>GitHub</h3>
+                        <p>https://github.com/hmr-BH</p>
+                    </div>
+                </a>
+                
+                <a href="https://x.com/hmr_bh" target="_blank" class="contact-card clickable">
+                    <div class="contact-icon">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                    <div>
+                        <h3>X</h3>
+                        <p>https://x.com/hmr_bh</p>
+                    </div>
+                </a>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <h3 data-i18n="location">地点</h3>
+                        <p data-i18n="locationText">中国</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="friends" class="section">
+        <h2 class="section-title" data-i18n="friends">友情链接</h2>
+        
+        <div class="friends-container">
+            <div class="friends-grid">
+                <!-- 友情链接卡片 1 -->
+                <div class="friend-card">
+                    <div class="friend-header">
+                        <h3 class="friend-title"><i class="fas fa-link"></i> <span data-i18n="friend1Title">Vilinko</span></h3>
+                        <p class="friend-url">https://www.vilinko.com/</p>
+                    </div>
+                    <div class="friend-body">
+                        <p class="friend-description" data-i18n="friend1Desc"></p>
+                        <div class="friend-tags">
+                            <span class="friend-tag" data-i18n="friend1Tag1"></span>
+                            <span class="friend-tag" data-i18n="friend1Tag2"></span>
+                            <span class="friend-tag" data-i18n="friend1Tag3"></span>
+                        </div>
+                        <a href="https://www.vilinko.com/" target="_blank" class="friend-link" data-i18n="visitWebsite">访问网站 <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-content">
+            <p data-i18n="footerText">感谢访问我的个人网站，期待与您交流合作！</p>
+            <p class="copyright">Copyright &copy; <year id="currentYear"></year> hmr-BH. <span data-i18n="allRightsReserved">保留所有权利</span></p>
+        </div>
+    </footer>
+
+    <div class="language-selector">
+        <div class="language-icon">
+            <i class="fas fa-language"></i>
+        </div>
+        <div class="cube" id="languageCube">
+            <div class="cube-face active" data-lang="zh-CN">
+                中文
+                <div class="language-info">简体中文</div>
+            </div>
+            <div class="cube-face" data-lang="en">
+                English
+                <div class="language-info">English</div>
+            </div>
+            <div class="cube-face" data-lang="ja">
+                日本語
+                <div class="language-info">日本語</div>
+            </div>
+            <div class="cube-face" data-lang="ru">
+                Русский
+                <div class="language-info">Русский</div>
+            </div>
+            <div class="cube-face"></div> <!-- 上盖 -->
+            <div class="cube-face"></div> <!-- 下盖 -->
+        </div>
+    </div>
+
+    <script src="./js/index.js"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+</body>
+</html>
