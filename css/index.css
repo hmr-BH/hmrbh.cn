@@ -209,7 +209,7 @@ nav {
     font-style: italic;
     line-height: 1.6;
     min-height: 100px;
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255);
     padding: 1rem 1rem;
     background: transparent;
     border-radius: 0 8px 8px 0;
@@ -834,13 +834,13 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url('../img/starry-sky-2051448_1280.jpg') !important;
+  background-image: url('../img/milky-way-2695569.jpg') !important;
   background-size: cover;
   background-repeat: repeat-x; /* 水平方向重复 */
   background-position: 0 0;
   color: #ffffff;
   overflow: hidden;
-  animation: scrollBackground 100s linear infinite; /* 动画参数 */
+  animation: scrollBackground 220s linear infinite; /* 动画参数 */
 }
 
 @keyframes scrollBackground {
