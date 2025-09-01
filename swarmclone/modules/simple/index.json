@@ -1,0 +1,14 @@
+{
+    "meta":{
+        "api_version": "1.0",
+        "name": "swarmclone_official_mirror",
+        "description": "SwarmClone Modules Mirror",
+        "base_url": "https://hmrbh.cn/swarmclone/modules/simple/"
+    },
+    "modules": {
+        "bilibili-chat":{
+            "latest_version": "0.1.1",
+            "url": "@/bilibili-chat"
+        }
+    }
+}

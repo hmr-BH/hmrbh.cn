@@ -1,0 +1,12 @@
+{
+    "name": "bilibili-chat",
+    "latest_version": "0.1.1",    
+    "author": "SwarmClone",
+    "author_email": "swarmclone@outlook.com",
+    "open_source_url": "https://github.com/SwarmClone/Bilibili-Chat-Support",
+    "license": "GPL-3.0-or-later",
+    "description": "Bilibili chat message support for SwarmClone AI Framework",
+    "python_files": [
+        "bilibili-chat.py"
+    ]
+}
