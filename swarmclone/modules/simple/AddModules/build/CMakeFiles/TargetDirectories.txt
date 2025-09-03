@@ -1,3 +1,0 @@
-E:/Code/AddModules/build/CMakeFiles/add-module.dir
-E:/Code/AddModules/build/CMakeFiles/edit_cache.dir
-E:/Code/AddModules/build/CMakeFiles/rebuild_cache.dir

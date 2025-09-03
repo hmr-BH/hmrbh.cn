@@ -1,0 +1,17 @@
+{
+    "name": "add-module-test",
+    "latest_version": "0.2.1",    
+    "author": "SwarmClone",
+    "author_email": "swarmclone@outlook.com",
+    "open_source_url": "https://github.com/SwarmClone/",
+    "license": "GPL-3.0-or-later",
+    "description": "add-module-test",
+    "python_files": [
+        "appmanifest_1478160.acf",
+        "fafdsafdas.zip",
+        "tttttttttttttt.zip",
+        "Nyaruru.zip",
+        "common/111111111111.zip",
+        "common/aaaaaaaaa.zip"
+    ]
+}
